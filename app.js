@@ -1,19 +1,17 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
-const productRoutes = require('./routes/products');
-const commentRoutes = require('./routes/comments');
+const productRoutes = require('./routes/products.routes');
 const mongoose = require('mongoose');
-const keys = require('./config/keys')
+const keys = require('./config/keys');
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex:true } );
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/products/api', productRoutes);
-app.use('/comments/api', commentRoutes);
 
 if (['production'].includes(process.env.NODE_ENV)) {
     app.use(express.static('client/build'));
@@ -24,5 +22,5 @@ if (['production'].includes(process.env.NODE_ENV)) {
 }
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
+    console.log(`Server is listening on port ${port}`);
 });

@@ -1,4 +1,4 @@
-const mongoose = require ("mongoose")
+const mongoose = require ("mongoose");
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
@@ -25,11 +25,8 @@ const productSchema = new Schema({
             default: Date.now
         }
     }],
-    createdAt: {
-        type: Date, 
-        default: Date.now 
-    },
-    createdAtMinute: Number
+},{
+    timestamps: true
 });
 
 const Product = mongoose.model('Product', productSchema);

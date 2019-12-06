@@ -3,22 +3,48 @@ const cheerio = require('cheerio');
 const axios = require('axios')
 
 const helper= {
-    getProducts : async (req, res, next) => {
-        const products = await Product.find();
-        res.send(products)
+    findAll : async (req, res, next) => {
+        // const products = await Product.find();
+        // res.send(products);
+        await Product.find()
+        .then(products => {
+            res.send(products);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving Products."
+            });
+        });
     },
-    getProduct : async (req, res, next) => {
-        const product = await Product.findById(req.params.id);
-        res.send(product)
+    findOne : async (req, res, next) => {
+        
+        await Product.findById(req.params.id)
+        .then(product => {
+            if(!product) {
+                return res.status(404).send({
+                    message: "Product not found with id " + req.params.id
+                });            
+            }
+            res.send(product);
+        }).catch(err => {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Product not found with id " + req.params.id
+                });                
+            }
+            return res.status(500).send({
+                message: "Error retrieving Product with id " + req.params.id
+            });
+        });
     },
+
     fetchData : async function(siteUrl){
         const result = await axios.get(siteUrl);
         return cheerio.load(result.data);
       },
     addProduct : async (req, res, next) => {
         const { url } = req.body
-            const $ = await helper.fetchData(url)
-            let name = $('.page-title').text()
+            const $ = await helper.fetchData(url);
+            let name = $('.page-title').text();
     
             // get product Id
             let finalPriceHtml = $('.price-final_price');
@@ -94,4 +120,4 @@ const helper= {
     }
 }
 
-module.exports = helper
+module.exports = helper;

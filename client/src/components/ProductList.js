@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import useProductState from '../states/useProductState';
 import { Link } from 'react-router-dom';
 import { Form, Table, Breadcrumb, Row, Col} from 'react-bootstrap';

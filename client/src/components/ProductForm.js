@@ -6,7 +6,6 @@ function ProductForm() {
   const { value, handleSubmit, onChange } = useInputState('');
 
   return (
-    <Form>
     <Breadcrumb>
       <Row>
         <Col>
@@ -20,7 +19,6 @@ function ProductForm() {
         </Col>
       </Row>
     </Breadcrumb>
-    </Form>
   )
 }
 
