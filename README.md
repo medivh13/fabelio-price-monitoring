@@ -21,5 +21,7 @@ This is build in react and mongodb
     * git remote -v
     * git push heroku master
 
+## to Run the unit test, type npm test
+
 ## Demo
 
