@@ -1,21 +1,26 @@
 import React from 'react';
 import useInputState from '../states/useInputState';
+import { Form, FormControl, Button, Breadcrumb, Row, Col} from 'react-bootstrap';
 
 function ProductForm() {
   const { value, handleSubmit, onChange } = useInputState('');
 
   return (
-    <div className="form">
-    <h2 className="title">Page 1 - Product Link Submission</h2>
-    <form onSubmit={handleSubmit}>
-      <input className="product-input" type="text" value={value}
-      onChange={onChange}
-      placeholder="Product Link"
-      required
-      />
-      <button className="submit-button" type="submit">Submit</button>
-    </form>
-    </div>
+    <Form>
+    <Breadcrumb>
+      <Row>
+        <Col>
+        <Form inline onSubmit={handleSubmit}>
+            <FormControl type="text" placeholder="Product Link Submission" className="mr-sm-2"
+              value={value}
+              onChange={onChange}
+              required />
+            <Button variant="primary" className="submit-button" type="submit">Submit</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Breadcrumb>
+    </Form>
   )
 }
 

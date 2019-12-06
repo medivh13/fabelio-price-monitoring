@@ -1,10 +1,10 @@
-const helper = require('../helper/comment')
+const comments = require('../controllers/comment')
 const express = require('express');
 const router = express.Router();
 
-router.get('/single/:id', helper.getComment);
-router.get('/:productId', helper.getComments);
-router.post('/', helper.addComment);
-router.put('/:id', helper.voteComment);
+router.get('/single/:id', comments.getComment);
+router.get('/:productId', comments.getComments);
+router.post('/', comments.addComment);
+router.put('/:id', comments.voteComment);
 
 module.exports = router;

@@ -1,11 +1,11 @@
-const helper = require('../helper/product')
+const products = require('../controllers/product')
 const express = require('express');
 const router = express.Router();
 const schedule  = require('node-schedule');
 
-router.get('/', helper.getProducts);
-router.get('/:id', helper.getProduct);
-router.post('/', helper.addProduct);
-schedule.scheduleJob('* * * * *', helper.hourlyUpdate);
+router.get('/', products.getProducts);
+router.get('/:id', products.getProduct);
+router.post('/', products.addProduct);
+schedule.scheduleJob('* * * * *', products.hourlyUpdate);
 
 module.exports = router;
