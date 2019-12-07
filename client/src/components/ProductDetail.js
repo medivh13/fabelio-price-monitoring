@@ -34,6 +34,7 @@ function ProductDetail({ match }){
         </Col>
       </Row>
       <br></br>
+      <p>*ps : Silahkan klik tanda panah kanan/kiri pada sisi kanan/kiri gambar untuk menggeser gambar menuju gambar yang lain</p>
       <Row>
         <Col>
         <center>
