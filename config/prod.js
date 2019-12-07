@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI : 'mongodb://localhost:27017/fabelio-scrapper'
+    mongoURI : process.env.MONGO_URI
 }
