@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useProductState from '../states/useProductState';
 import Moment from 'react-moment';
-import { Nav, Table, Breadcrumb, Container, Row, Col, Image } from 'react-bootstrap';
+import { Nav, Table, Breadcrumb, Container, Row, Col, Carousel } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 
 
@@ -35,11 +35,25 @@ function ProductDetail({ match }){
       </Row>
       <br></br>
       <Row>
-        {product.imgUrls.map( (url, index) => (
-          <Col key={index}>
-            <center><Image src={url} alt="Product Look" rounded width="200px"/></center>
-          </Col>
-          ))}
+        <Col>
+        <center>
+            <Carousel slide ="true">
+              {product.imgUrls.map( (url, index) => (
+              // <Col key={index}>
+              //   <center><Image src={url} alt="Product Look" rounded width="200px"/></center>
+              // </Col>
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100"
+                  src={url}
+                  alt="First slide"
+                  width="50%"
+                />
+              </Carousel.Item>
+              ))}
+            </Carousel>
+          </center>
+        </Col>
       </Row>
       <br></br>
       <Row>
