@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useProductState from '../states/useProductState';
 import Moment from 'react-moment';
 import { Nav, Table, Breadcrumb, Container, Row, Col, Image } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
 
 
 function ProductDetail({ match }){
@@ -24,7 +25,7 @@ function ProductDetail({ match }){
           {product.name}
         </Col>
         <Col>
-          Rp. {product.prices[0].price}
+          <NumberFormat value={product.prices[0].price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} />
         </Col>
       </Row>
       <Row>
@@ -32,13 +33,15 @@ function ProductDetail({ match }){
           <div dangerouslySetInnerHTML={{__html: product.description}} />
         </Col>
       </Row>
+      <br></br>
       <Row>
         {product.imgUrls.map( (url, index) => (
           <Col key={index}>
-            <Image src={url} alt="Product Look" rounded width="200px"/>
+            <center><Image src={url} alt="Product Look" rounded width="200px"/></center>
           </Col>
           ))}
       </Row>
+      <br></br>
       <Row>
         <Col>
           <Breadcrumb>
@@ -68,7 +71,7 @@ function ProductDetail({ match }){
             <tbody>
             {product.prices.map((price, index) =>(
                 <tr key={index}>
-                  <td>{price.price}</td>
+                  <td><NumberFormat value={price.price} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></td>
                   <td>
                     <Moment locale="id">
                       {price.at}
