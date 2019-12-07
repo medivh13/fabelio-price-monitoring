@@ -42,7 +42,7 @@ const helper= {
         return cheerio.load(result.data);
       },
     addProduct : async (req, res, next) => {
-        const { url } = req.body
+        const { url } = req.body;
             const $ = await helper.fetchData(url);
             let name = $('.page-title').text();
     
@@ -76,7 +76,7 @@ const helper= {
                     price
                 }],
                 createAtMinute : new Date().getMinutes()
-            })
+            });
             
             try {
                 await product.save();
