@@ -1,6 +1,6 @@
 # Fabelio Price Monitor Web App
 
-This is build in react and mongodb
+This is build in react and mongodb. and I alse use react-bootstrap to make some views, ex: carousel for the image in detail product
 
 ## Guide - Development
 1. Clone the repo.
@@ -16,10 +16,11 @@ This is build in react and mongodb
 4. In root directory do these following steps to deploy app in heroku.
     * git init
     * git add .
-    * git commit -m "My first commit"
+    * git commit -am "Make it better"
     * heroku create
     * git remote -v
     * git push heroku master
+    * dont forget to instal the mlab mongodb adds-on in heroku then do "heroku config:get MONGODB_URI" to get mongodb uri
 
 ## to Run the unit test, type npm test
 
